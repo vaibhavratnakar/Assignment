@@ -1,0 +1,135 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[13pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{graphicx}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+ 
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+ 
+\title{\underline{Plots of Time Vs Number of Elements}}
+\author{Abhinav Kumar}
+
+\maketitle
+
+{\Large{\bf{The plots for each thread configuration:}}
+
+\bigskip
+Number of Threads=1:
+\begin{figure}[h]
+\includegraphics[scale=1]{gr1_1.eps}
+\end{figure}
+
+The above plot is when 1 thread is working on the array.
+
+\newpage
+Number of Threads=2:
+\begin{figure}[h]
+\includegraphics[scale=1]{gr1_2.eps}
+\end{figure}
+
+The above plot is when 2 threads are working on the array.
+
+The threads work in parallel thereby decreasing the time.
+
+\newpage
+Number of Threads=4:
+\begin{figure}[h]
+\includegraphics[scale=1]{gr1_3.eps}
+\end{figure}
+
+The above plot is when 4 threads are working on the array.
+
+The performance is considerably improved.
+
+\newpage
+Number of Threads=8:
+\begin{figure}[h]
+\includegraphics[scale=1]{gr1_4.eps}
+\end{figure}
+
+The above plot is when 8 threads are working on the array.
+
+This suffers initially as thread creation time makes it slow
+
+but gives fast result as number of elements increases.
+
+\newpage
+Number of Threads=16:
+\begin{figure}[h]
+\includegraphics[scale=1]{gr1_5.eps}
+\end{figure}
+
+The above plot is when 16 threads are working on the array.
+
+Same argument as when number of threads was 8.
+
+\newpage
+Relative Comparison of Time Taken:
+\begin{figure}[h]
+\includegraphics[scale=1]{gr2.eps}
+\end{figure}
+
+The above lineplot is of all the threads on the same graph
+
+for comparison of the performance. Threads 4 performs extremely
+
+well.
+
+\newpage
+Histogram Representation of Speedup:
+\begin{figure}[h]
+\includegraphics[scale=1]{gr3_1.eps}
+\end{figure}
+
+Leftmost bar for thread 1 and rightmost for threads 16
+
+\newpage
+Histogram Representation of Speedup-Coloured:
+\begin{figure}[h]
+\includegraphics[scale=1]{gr3_2.eps}
+\end{figure}
+
+Leftmost bar for thread 1 and rightmost for threads 16
+
+\newpage
+Histogram Representation of Speedup with error bars:
+\begin{figure}[h]
+\includegraphics[scale=1]{gr3_3.eps}
+\end{figure}
+
+Leftmost bar for thread 1 and rightmost for threads 16.
+And the variances mark the top and bottom for every bar.
+ 
+% --------------------------------------------------------------
+%     You don't have to mess with anything below this line.
+% --------------------------------------------------------------
+ 
+\end{document}
+

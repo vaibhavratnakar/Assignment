@@ -1,0 +1,22 @@
+# -*- MakeFile -*-
+
+#target: dependencies
+#	action
+
+all: App runtest
+
+App: prog.o thread_function.o
+	gcc prog.o thread_function.o -o App -lpthread -lm
+
+prog.o: prog.c common.h
+	gcc -c prog.c -lpthread -lm 
+
+thread_function.o: thread_function.c common.h
+	gcc -c thread_function.c -lpthread -lm 
+
+runtest: App params.txt threads.txt loop.sh
+	bash loop.sh params.txt threads.txt runtest
+
+clean:
+	rm -f *.o prog App thread_function.o runtest
+	

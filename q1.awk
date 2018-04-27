@@ -1,0 +1,98 @@
+#!/usr/bin/awk
+BEGIN {
+        nc=0
+        ns=0
+        c=0
+}
+{
+	z=1
+        i=1
+        if(c==0)
+	{
+		while(i<=length($0))
+		{
+			x=substr($0,i,1)
+			if(x=="\"")
+			{
+				i=i+1
+				ns++
+				while(i<=length($0))
+				{
+					x=substr($0,i,1)
+					if(x=="\"" && substr($0,i-1,1)!="\\")
+					{
+						break;
+					}
+					i++
+				}
+			}		
+			else if(x=="/")
+			{
+				i=i+1;
+				x=substr($0,i,1)
+				if(x=="/")
+				{
+					if(z==1)
+						nc++;
+					break;
+				}
+				else if(x=="*")
+				{
+					i=i+2;
+					if(z==1)					
+						nc++;
+					flag=0
+					while(i<=length($0))
+					{
+						x=substr($0,i,1)
+						if(x=="/")
+						{
+							if(substr($0,i-1,1)=="*")
+							{
+								flag=1;
+								break;
+							}
+						}
+						i++
+					}
+					if(flag==0)
+						c=1;
+					else
+					{
+						i++
+						z=0;
+					}
+				}
+			}
+			i++
+		}			
+	}
+	else
+	{
+		z=0		
+		nc++
+		i=i+1
+		flag=0
+		while(i<=length($0))
+		{
+			x=substr($0,i,1)
+			if(x=="/")
+			{
+				if(substr($0,i-1,1)=="*")
+				{
+					flag=1;
+					break;
+				}
+			}
+			i++
+		}
+		if(flag==1)
+		{
+			c=0
+			i++;
+		}
+	}
+}
+END {
+	print ns,nc
+}
